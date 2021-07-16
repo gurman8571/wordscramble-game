@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" media="screen and (max-width:1000px)" href="phone.css">
+
+    <title>wordgame</title>
+</head>
+<body>
+    <br><br>
+
+    <header>
+        programmers scramble  
+    </header>
+    <div class="container">
+        <br><br>
+  <h3  id="h3">
+    click start button to play
+  </h3>
+  <br>
+  <input type="text" name="" id=" input">
+  <br><br>
+  <button>start</button>
+
+    </div>
+
+    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    
+    let play=false;
+    let guess=document.querySelector('#h3');
+    let input=document.querySelector('#input')
+    let new_words="";
+    let random_words="";
+    let words=['python','java','perl','scala','swift','php','javascript','ruby','c++','html','css','julia','ada','kotlin','sql'];//create a array of languages
+    let createnewwords=() =>{
+        let random= Math.floor(Math.random()*words.length);
+       let wordgenerated=words[random]; // generted a random number and pas it in array index to get the word done cieling to round off
+         return wordgenerated;    
+    }
+    const scramblewords= (arr) =>{
+        for (let i = arr.length-1; i>=0; i--) {
+            let element = arr[i];
+            let j=Math.floor(Math.random()*(i+1));//j is a index value whic is distributed to names
+           // console.log(j);
+            arr[i]=arr[j];
+            arr[j]=element;//swapping index values to shuffle
+            
+            
+        }
+        return arr;
+        
+    }
+    $('button').click(function () {
+        if(!play){
+            play=true;
+            $('input').css("display", "inline");
+            $('button').html('guess');
+            
+ new_words=createnewwords();//get the words of arreay
+  random_words=scramblewords(new_words.split("")).join("");//func to scremble words and pass the word in it and join to join letters
+  //new_words.split are used to split word in letters
+  console.log(random_words);
+guess.innerHTML= `guess the language name   '${random_words}'`;
+
+        }
+      
+        
+        else{
+
+            let input=document.querySelector('input').value;
+            if(input==new_words)
+            {
+                play=false;//to stop game and game starts again
+                //console.log("corect");
+                guess.innerHTML=`yes its correct .it is ${input}`;
+                $('button').html('start again');
+                $('button').click(function () {
+
+                    $('input').val("");
+                })
+               
+                
+           
+            }
+            else
+            {
+                console.log("incorrect");
+                guess.innerHTML=`no its not  correct .it is   ${new_words}`;
+                $('button').html('start again');
+                $('input').val("");
+         play=false;
+        
+                  
+
+            }
+        }
+    })
+
+
+</script>
+</html>

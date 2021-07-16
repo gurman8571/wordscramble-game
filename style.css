@@ -1,0 +1,52 @@
+*{
+    text-transform: capitalize;
+    text-align: center;
+    font-family: 'Luckiest Guy', cursive;
+    color:black;
+    font-size: 30px;
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background: url(img/gam2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.container{
+    border: 2px solid;
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    
+    top:30%;
+    left:27%;
+    box-shadow: 0 8px 6px -6px black;
+background-color: greenyellow;    
+}
+header{
+    width: 100%;
+   line-height: 15 vh;
+    padding: 10px;
+    word-spacing: 5px;
+}
+input{
+ display: none;  
+    border: none;
+    border-bottom: 2px solid black;
+    
+    background: none;
+
+}
+button{
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+    width: 50%;
+}
+button:hover{
+    cursor: pointer;
+    background-color: cornflowerblue;
+}
